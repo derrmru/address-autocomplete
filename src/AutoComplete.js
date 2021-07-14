@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 const style = {
     container: {
@@ -160,7 +160,7 @@ const AutoComplete = ({
                 />
             </label>
             <label style={!mobile ? style.halfLabel : style.fullLabel}>
-                Number or Premises Address:
+                Number / Name:
                 <input
                     id="addressName"
                     type="text"

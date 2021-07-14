@@ -4,34 +4,39 @@ This is a reusable React component for quickly and easily adding an Address sect
 
 It uses Google Maps Places Autocomplete service to predict and autocomplete your input fields. 
 
+This component offers a fast setup and inherits the styling of your app.
+
 ## Live Demo
 
 ![demo](https://raw.githubusercontent.com/derrmru/address-autocomplete/master/resources/example.gif)
 
+Test the demo [here](https://thepetersweeney.com/autocomplete-address)
+
 ## Setup
 
-1. The Hard Bit - if you have not already done so, follow [PayPal's instructions](https://developer.paypal.com/docs/checkout/integrate/?_ga=2.152185595.332577341.1618841693-1038715808.1617958209) to get your Client ID
+1. Setup the APIS:
+
+ - [Enable Google Maps Places API](https://developers.google.com/maps/documentation/javascript/places#enable_apis).
+ - [Get an API key](https://developers.google.com/maps/documentation/javascript/get-api-key).
 
 2. In your CLI and once navigated to your React JS project, install with the following command:
 
 ```javascript
-npm i react-paypal-smart-button
+npm i places-autocomplete-react
 ```
 
 3. Implement in your app, as per the following example:
 
 ```javascript
-import PayPalButton from 'react-paypal-smart-button'
+import AutoComplete from 'places-autocomplete-react'
 
 function App() {
   return (
-      <PayPalButton 
-        price={100}
-        description="YOUR_PRODUCT_DESCRIPTION"
-        clientId="YOUR_PAYPAL_APP_CLIENT_ID"
-        currency="USD"
-        paySubmit={() => handlePaypalSuccess()}
-       />
+      <AutoComplete 
+        placesKey="AIzaSyAkuPHNHz8Ki1KV6n6iI1-EFVIC3ZAm0QY"
+        inputId="address"
+        setAddress={(addressObject) => console.log(addressObject)}
+        />
   );
 }
 
@@ -41,11 +46,10 @@ export default App;
 The props are of the following types:
 
 ```
-price: number,
-description: string,
-clientId: string,
-currency: string  || this is a three digit currency code e.g. 'EUR', 'GBP' or 'USD'
-paySubmit: function || this function will be called following successful payment transaction in your application. Handle the successful transaction however you like.
+placesKey: string - this is your api key. The component will handle the rest.
+inputId: string - using distinct id's will allow you to use multiple instances of this component in your form.
+setAddress: function - the formatted address and input field state is made available to the parent component via this function. It's up to you what you do with it.
+
 ```
 
 ## Dependencies
@@ -53,4 +57,3 @@ paySubmit: function || this function will be called following successful payment
 None, just use it in your react project.
 
 ## That's it!
-
