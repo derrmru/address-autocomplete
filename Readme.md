@@ -6,7 +6,7 @@ It uses Google Maps Places Autocomplete service to predict and autocomplete your
 
 ## Live Demo
 
-![demo]()
+![demo](https://raw.githubusercontent.com/derrmru/address-autocomplete/master/resources/example.gif)
 
 ## Setup
 
