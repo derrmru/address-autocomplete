@@ -33,7 +33,7 @@ import AutoComplete from 'places-autocomplete-react'
 function App() {
   return (
       <AutoComplete 
-        placesKey="AIzaSyAkuPHNHz8Ki1KV6n6iI1-EFVIC3ZAm0QY"
+        placesKey="YOUR_GOOGLE_MAPS_API_KEY"
         inputId="address"
         setAddress={(addressObject) => console.log(addressObject)}
         />

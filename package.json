@@ -1,9 +1,9 @@
 {
   "name": "places-autocomplete-react",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "An Address Form Using Google Places AutoComplete, build with React as a reusable component.",
   "main": "./lib/AutoComplete.js",
-  "homepage": "https://thepetersweeney.com/paypal-react",
+  "homepage": "https://thepetersweeney.com/autocomplete-address",
   "repository": {
     "type": "git",
     "url": "https://github.com/derrmru/address-autocomplete"
@@ -14,6 +14,7 @@
   },
   "keywords": [
     "react",
+    "autocomplete",
     "address",
     "google maps",
     "places",
@@ -21,7 +22,6 @@
     "easy setup",
     "component",
     "react-component",
-    "autocomplete",
     "autosuggest"
   ],
   "license": "MIT",
@@ -53,7 +53,6 @@
     "@babel/core": "^7.13.16",
     "@babel/preset-env": "^7.13.15",
     "@babel/preset-react": "^7.13.13",
-    "@babel/preset-stage-0": "^7.8.3",
-    "places-autocomplete-react": "file:places-autocomplete-react-1.0.0.tgz"
+    "@babel/preset-stage-0": "^7.8.3"
   }
 }
