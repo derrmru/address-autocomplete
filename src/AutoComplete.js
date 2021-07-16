@@ -3,33 +3,31 @@ import React, { useEffect, useState } from 'react';
 const style = {
     container: {
         width: '100%',
-        padding: '20px',
         boxSizing: 'border-box',
         display: 'flex',
         flexDirection: 'row',
         justifyContent: 'space-between',
-        flexWrap: 'wrap'
+        flexWrap: 'wrap',
+        fontFamily: 'inherit'
     },
     fullWidth: {
         width: '100%',
-        marginTop: '10px',
-        padding: '10px 5px',
+        fontFamily: 'inherit',
         boxSizing: 'border-box'
     },
     fullLabel: {
         width: '100%',
-        margin: '10px 0',
-        boxSizing: 'border-box'
+        boxSizing: 'border-box',
+        fontFamily: 'inherit'
     },
     halfLabel: {
         width: '49%',
-        margin: '10px 0',
-        boxSizing: 'border-box'
+        boxSizing: 'border-box',
+        fontFamily: 'inherit'
     },
     button: {
         width: '100%',
-        marginTop: '30px',
-        padding: '10px 5px',
+        fontFamily: 'inherit',
         boxSizing: 'border-box'
     }
 }
@@ -49,27 +47,28 @@ const AutoComplete = ({
     const [formattedAddress, setFormattedAddress] = useState('');
 
     //functionally clear all state
-    const clear = () => {
+    const clear = (e) => {
+        if (e) e.preventDefault()
         setInput('')
         setAddressName('')
         setStreet('')
         setCity('')
         setCountry('')
         setPostCode('')
+        setFormattedAddress('');
     }
 
     //on mount, load google auto complete 
     useEffect(() => {
         const renderGoogle = () => {
-            const autoComplete = new window.google.maps.places.Autocomplete(
+            window[inputId] = new window.google.maps.places.Autocomplete(
                 document.getElementById(inputId),
                 {}
             );
             const handlePlaceSelect = () => {
-                const place = autoComplete.getPlace();
+                const place = window[inputId].getPlace();
                 setFormattedAddress(place.formatted_address);
                 clear()
-                console.log(place)
                 for (const component of place.address_components) {
                     const type = component.types[0];
                     switch (type) {
@@ -110,15 +109,21 @@ const AutoComplete = ({
             }
 
             //listen for place change in input field
-            autoComplete.addListener("place_changed", handlePlaceSelect)
+            window[inputId].addListener("place_changed", handlePlaceSelect)
         }
 
-        if (!window.google) {
+        //if places script is already found then listen for load and then renderGoogle
+        let found = document.getElementById('placesScript') ? true : false;
+        if (!found) {
             const script = document.createElement("script");
+            script.id = 'placesScript';
             script.src = "https://maps.googleapis.com/maps/api/js?key=" + placesKey + "&libraries=places";
             script.async = true;
             script.onload = () => renderGoogle();
             document.body.appendChild(script);
+        }
+        if (found) {
+            document.getElementById('placesScript').addEventListener('load', renderGoogle);
         }
     }, [placesKey, inputId, addressName, city])
 
@@ -160,7 +165,7 @@ const AutoComplete = ({
                 />
             </label>
             <label style={!mobile ? style.halfLabel : style.fullLabel}>
-                Number / Name:
+                Number or Premises Address:
                 <input
                     id="addressName"
                     type="text"
@@ -192,7 +197,7 @@ const AutoComplete = ({
                 />
             </label>
             <label style={!mobile ? style.halfLabel : style.fullLabel}>
-                Country: 
+                Country:
                 <input
                     id="country"
                     type="text"
@@ -215,7 +220,7 @@ const AutoComplete = ({
             </label>
             <button
                 style={style.button}
-                onClick={() => clear()}
+                onClick={(e) => clear(e)}
             >
                 Clear Address
             </button>
