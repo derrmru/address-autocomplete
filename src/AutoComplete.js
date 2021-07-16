@@ -165,7 +165,7 @@ const AutoComplete = ({
                 />
             </label>
             <label style={!mobile ? style.halfLabel : style.fullLabel}>
-                Number or Premises Address:
+                Number or House Name:
                 <input
                     id="addressName"
                     type="text"
