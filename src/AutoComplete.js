@@ -67,8 +67,8 @@ const AutoComplete = ({
             );
             const handlePlaceSelect = () => {
                 const place = window[inputId].getPlace();
-                setFormattedAddress(place.formatted_address);
                 clear()
+                setFormattedAddress(place.formatted_address);
                 for (const component of place.address_components) {
                     const type = component.types[0];
                     switch (type) {
