@@ -35,7 +35,8 @@ const style = {
 const AutoComplete = ({
     placesKey,
     inputId,
-    setAddress
+    setAddress,
+    required
 }) => {
     //input state
     const [input, setInput] = useState('');
@@ -172,7 +173,7 @@ const AutoComplete = ({
                     style={style.fullWidth}
                     value={addressName || ''}
                     onChange={(e) => setAddressName(e.target.value)}
-                    required
+                    required={required && required}
                 />
             </label>
             <label style={!mobile ? style.halfLabel : style.fullLabel}>
@@ -193,7 +194,7 @@ const AutoComplete = ({
                     style={style.fullWidth}
                     value={city || ''}
                     onChange={(e) => setCity(e.target.value)}
-                    required
+                    required={required && required}
                 />
             </label>
             <label style={!mobile ? style.halfLabel : style.fullLabel}>
@@ -204,7 +205,7 @@ const AutoComplete = ({
                     style={style.fullWidth}
                     value={country || ''}
                     onChange={(e) => setCountry(e.target.value)}
-                    required
+                    required={required && required}
                 />
             </label>
             <label style={!mobile ? style.halfLabel : style.fullLabel}>
@@ -215,7 +216,7 @@ const AutoComplete = ({
                     style={style.fullWidth}
                     value={postCode || ''}
                     onChange={(e) => setPostCode(e.target.value)}
-                    required
+                    required={required && required}
                 />
             </label>
             <button
