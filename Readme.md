@@ -36,6 +36,7 @@ function App() {
         placesKey="YOUR_GOOGLE_MAPS_API_KEY"
         inputId="address"
         setAddress={(addressObject) => console.log(addressObject)}
+        required={true}
         />
   );
 }
@@ -49,11 +50,16 @@ The props are of the following types:
 placesKey: string - this is your api key. The component will handle the rest.
 inputId: string - using distinct id's will allow you to use multiple instances of this component in your form.
 setAddress: function - the formatted address and input field state is made available to the parent component via this function. It's up to you what you do with it.
+required: boolean - (optional) sets the fields as required
 
 ```
 
 ## Dependencies
 
 None, just use it in your react project.
+
+## Support Me
+
+If you find the component useful or like my work, why not buy me a coffee by [clicking here](https://www.buymeacoffee.com/derrmru)
 
 ## That's it!
