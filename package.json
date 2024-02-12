@@ -1,6 +1,6 @@
 {
   "name": "places-autocomplete-react",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "description": "An Address Form Using Google Places AutoComplete, build with React as a reusable component.",
   "main": "./lib/AutoComplete.js",
   "homepage": "https://thepetersweeney.com/autocomplete-address",
